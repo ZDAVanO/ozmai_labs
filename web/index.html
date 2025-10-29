@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="uk" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Image Diff</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+  <body>
+    <div class="container-fluid py-3">
+
+      <div class="row g-3">
+        
+        <!-- Controls -->
+        <aside class="col-12 col-md-3 col-lg-3">
+          <div class="card sticky-sidebar">
+            <div class="card-body">
+              <h2 class="h6">Upload Images</h2>
+
+              <div class="mb-3">
+                <label for="img1Input" class="form-label">First image</label>
+                <input
+                  type="file"
+                  id="img1Input"
+                  class="form-control"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="img2Input" class="form-label">Second image</label>
+                <input
+                  type="file"
+                  id="img2Input"
+                  class="form-control"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
+
+              <div class="form-check form-switch mb-3">
+                  <input class="form-check-input" type="checkbox" id="pixelateSwitch">
+                  <label class="form-check-label" for="pixelateSwitch">Pixelated rendering</label>
+                </div>
+
+              <hr />
+
+              <h2 class="h6">Threshold</h2>
+              <div class="mb-2">
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="thresholdType"
+                    id="thresholdPercent"
+                    value="Percent"
+                    checked
+                  />
+                  <label class="form-check-label" for="thresholdPercent"
+                    >Percent</label
+                  >
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="thresholdType"
+                    id="thresholdIntensity"
+                    value="Intensity"
+                  />
+                  <label class="form-check-label" for="thresholdIntensity"
+                    >Intensity</label
+                  >
+                </div>
+
+              </div>
+
+              <div class="mb-3">
+                <label id="thresholdLabel" class="form-label">Threshold (%)</label>
+                <input type="range" class="form-range" id="thresholdSlider" step="0.1" />
+                <div class="d-flex justify-content-between small-muted">
+                  <span>Value:</span>
+                  <span id="thresholdValue">50.0</span>
+                </div>
+                <div class="small-muted" id="computedIntensity"></div>
+              </div>
+
+              <hr />
+
+
+              <div class="d-grid gap-2">
+
+                <button id="computeBtn" class="btn btn-primary" disabled>
+                  Compute Differences
+                </button>
+
+                <div class="form-check form-switch mb-3">
+                  <input class="form-check-input" type="checkbox" id="autoComputeSwitch" checked>
+                  <label class="form-check-label" for="autoComputeSwitch">Auto-compute  on change</label>
+                </div>
+
+                <div class="input-group mt-2">
+                  <label class="input-group-text" for="formatSelect">Format</label>
+                  <select id="formatSelect" class="form-select">
+                    <option value="png">PNG</option>
+                    <option value="jpg">JPG</option>
+                    <option value="bmp">BMP</option>
+                  </select>
+                </div>
+
+                <button id="downloadBtn" class="btn btn-outline-secondary" disabled>
+                  ⬇️ Download result
+                </button>
+
+              </div>
+
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="col-12 col-md-9 col-lg-9">
+
+          <!-- Row view -->
+          <div id="rowView" class="">
+            <div class="row g-3">
+              <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                  <div class="card-header">Image 1</div>
+                  <div class="card-body">
+                    <img id="img1Preview" class="img-preview" alt="Image 1 preview" />
+                    <div id="img1Placeholder" class="img-placeholder">No image 1 selected</div>
+                    <div class="mt-2 small-muted" id="img1Info"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                  <div class="card-header">Image 2</div>
+                  <div class="card-body">
+
+                    <canvas id="img2ResizedCanvas" class="" style="display: none"></canvas>
+                    <div class="mt-2 mb-4 small-muted" id="img2ResizedInfo" style="display: none"></div>
+
+                    <img id="img2Preview" class="img-preview" alt="Image 2 preview" />
+                    <div id="img2Placeholder" class="img-placeholder">No image 2 selected</div>
+                    <div class="mt-2 small-muted" id="img2Info"></div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-lg-4">
+                <div class="card h-100">
+                  <div class="card-header">Result</div>
+                  <div class="card-body">
+                    <canvas id="resultCanvas" aria-label="Result"></canvas>
+                    <div id="resultPlaceholder" class="img-placeholder">No result yet</div>
+                    <div class="mt-2 small-muted" id="resultInfo"></div>
+                    <div class="small-muted" id="diffInfo"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+
+    <!-- Modal for fullscreen image/canvas preview -->
+    <div class="modal fade" id="fullscreenModal" tabindex="-1" aria-labelledby="fullscreenModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="fullscreenModalLabel">Full Screen Preview</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body d-flex justify-content-center align-items-center" style="min-height:60vh;">
+            <div id="fullscreenModalContent" style="width:100%;max-height:80vh;display:flex;justify-content:center;align-items:center;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
+    crossorigin="anonymous"
+    ></script>
+
+  </body>
+</html>
