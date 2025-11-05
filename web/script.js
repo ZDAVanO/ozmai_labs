@@ -342,7 +342,7 @@
             img2ResizedCanvas.style.display = '';
             drawResultToCanvas(img2ResizedCanvas, imageData);
             img2ResizedInfo.style.display = '';
-            img2ResizedInfo.textContent = `Image 2 (resized to ${img1Data.w}x${img1Data.h})`;
+            img2ResizedInfo.textContent = `Image 2 (resized to ${img1Data.w}x${img1Data.h}, resizeNNImageData: ${ms.toFixed(3)} ms)`;
           } else {
             img2ResizedData = null;
             img2ResizedCanvas.style.display = 'none';
@@ -381,11 +381,9 @@
         drawResultToCanvas(img2ResizedCanvas, imageData);
 
         img2ResizedInfo.style.display = '';
-        img2ResizedInfo.textContent = `Image 2 (resized to ${img1Data.w}x${img1Data.h})`;
-      
-    } else {
+        img2ResizedInfo.textContent = `Image 2 (resized to ${img1Data.w}x${img1Data.h}, resizeNNImageData: ${ms.toFixed(3)} ms)`;
+      } else {
         img2ResizedData = null;
-
         img2ResizedCanvas.style.display = 'none';
         img2ResizedInfo.style.display = 'none';
       }
