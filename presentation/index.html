@@ -282,6 +282,65 @@
             line-height: 1.4;
         }
 
+        /* Slide 4: Algorithm Process */
+        .process-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            width: 100%;
+            max-width: 1400px;
+        }
+        .process-card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 16px;
+            padding: 2rem 1rem;
+            width: 240px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .process-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+        .process-icon {
+            width: 80px;
+            height: 80px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+        .process-arrow {
+            color: var(--accent-blue);
+            font-size: 2.5rem;
+            font-weight: bold;
+            opacity: 0.8;
+        }
+        .process-step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        .process-step-desc {
+            font-size: 1rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
         /* Controls */
         .controls {
             position: absolute;
@@ -386,40 +445,56 @@
 
     <!-- Slide 4: Algorithm -->
     <div class="slide slide-4">
-        <div class="bg-shape" style="background: var(--accent-purple); bottom: -20%; left: -10%; width: 700px; height: 700px; opacity: 0.2;"></div>
-        <h2>Алгоритм порівняння</h2>
-        <div class="grid-2">
-            <div class="glass-card">
-                <div class="algo-step">
-                    <div class="algo-icon">JS</div>
-                    <div>
-                        <strong>Технологія</strong>
-                        <p style="font-size: 1rem; margin:0;">Canvas API (`ImageData`)</p>
-                    </div>
+        <div class="bg-shape" style="background: var(--accent-purple); bottom: -20%; left: -10%; width: 700px; height: 700px; opacity: 0.1;"></div>
+        <h2 style="color: #60a5fa;">Алгоритм порівняння</h2>
+        
+        <div class="process-container">
+            <!-- Step 1 -->
+            <div class="process-card">
+                <div class="process-icon">
+                    <i class="fas fa-upload"></i>
                 </div>
-                <div class="algo-step">
-                    <div class="algo-icon">📏</div>
-                    <div>
-                        <strong>Metric</strong>
-                        <p style="font-size: 1rem; margin:0;">Euclidean Distance (R² + G² + B²)</p>
-                    </div>
-                </div>
-                <div class="algo-step">
-                    <div class="algo-icon">⚡</div>
-                    <div>
-                        <strong>Optimization</strong>
-                        <p style="font-size: 1rem; margin:0;">No `Math.sqrt()` inside loop</p>
-                    </div>
-                </div>
+                <div class="process-step-title">1. Вхідні дані</div>
+                <div class="process-step-desc">Завантаження зображень</div>
             </div>
-            <div class="glass-card" style="background: rgba(59, 130, 246, 0.1); border-color: var(--accent-blue);">
-                <h3 style="color: white; margin-bottom: 1rem;">Чому Nearest Neighbor?</h3>
-                <p style="font-style: italic; color: #bfdbfe;">"Щоб не створювати нових кольорів, яких не було в оригіналі, і бачити чесну різницю пікселів."</p>
-                <div style="margin-top: 2rem; display: flex; gap: 1rem;">
-                    <div style="width: 40px; height: 40px; background: red;"></div>
-                    <div style="width: 40px; height: 40px; background: blue;"></div>
-                    <div style="display: flex; align-items: center; color: #94a3b8;">No blurry edges!</div>
+
+            <div class="process-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="process-card">
+                <div class="process-icon">
+                    <i class="fas fa-ruler-combined"></i>
                 </div>
+                <div class="process-step-title">2. Масштабування</div>
+                <div class="process-step-desc">Nearest Neighbor</div>
+            </div>
+
+            <div class="process-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="process-card">
+                <div class="process-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div class="process-step-title">3. Обчислення</div>
+                <div class="process-step-desc">Euclidean Distance</div>
+            </div>
+
+            <div class="process-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="process-card">
+                <div class="process-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <div class="process-step-title">4. Вихід</div>
+                <div class="process-step-desc">Red/Blue diff map</div>
             </div>
         </div>
     </div>
