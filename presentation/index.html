@@ -354,7 +354,7 @@
             width: 80%;
             margin-top: 2rem;
             padding-bottom: 2rem;
-            border-bottom: 2px solid var(--glass-border);
+            /* border-bottom: 2px solid var(--glass-border); */
         }
         .bar-group {
             display: flex;
@@ -572,11 +572,10 @@
                 </div>
                 <div class="ps-content">
                     <p>Ручний пошук відмінностей на зображеннях — це:</p>
-                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
-                        <li>⏳ Довгий та монотонний процес</li>
-                        <li>👁️ Втомлює очі та знижує увагу</li>
-                        <li>❌ Високий ризик пропустити деталі</li>
-                        <li>� Неможливість точної оцінки</li>
+                    <ul class="fa-ul" style="margin-left: 3.5rem; margin-top: 1rem;">
+                        <li><span class="fa-li"><i class="fas fa-hourglass-half"></i></span>Довгий та монотонний процес</li>
+                        <li><span class="fa-li"><i class="fas fa-eye-slash"></i></span>Втомлює очі та знижує увагу</li>
+                        <li><span class="fa-li"><i class="fas fa-times-circle"></i></span>Неможливість точної оцінки</li>
                     </ul>
                 </div>
             </div>
@@ -596,11 +595,11 @@
                 </div>
                 <div class="ps-content">
                     <p>Автоматизований алгоритм, який забезпечує:</p>
-                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
-                        <li>🚀 Миттєвий результат у браузері</li>
-                        <li>🎨 Візуальне підсвічування (Red/Blue)</li>
-                        <li>🎚️ Налаштування порогу чутливості</li>
-                        <li>✅ 100% точність порівняння</li>
+                    <ul class="fa-ul" style="margin-left: 3.5rem; margin-top: 1rem;">
+                        <li><span class="fa-li"><i class="fas fa-rocket"></i></span>Миттєвий результат у браузері</li>
+                        <li><span class="fa-li"><i class="fas fa-palette"></i></span>Візуальне підсвічування (Red/Blue)</li>
+                        <li><span class="fa-li"><i class="fas fa-sliders"></i></span>Налаштування порогу чутливості</li>
+                        <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>100% точність порівняння</li>
                     </ul>
                 </div>
             </div>
@@ -618,44 +617,46 @@
 
         <div class="grid-2">
             <!-- Features List -->
-            <div class="feature-list">
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-desktop"></i>
+            <div class="glass-card">
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Адаптивний дизайн</h4>
+                            <p>Для Desktop та Mobile.</p>
+                        </div>
                     </div>
-                    <div class="feature-text">
-                        <h4>Адаптивний дизайн</h4>
-                        <p>Для Desktop та Mobile.</p>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-thumbtack"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>"Sticky" панель керування</h4>
+                            <p>Завжди під рукою.</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-thumbtack"></i>
-                    </div>
-                    <div class="feature-text">
-                        <h4>"Sticky" панель керування</h4>
-                        <p>Завжди під рукою.</p>
-                    </div>
-                </div>
 
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Auto-compute</h4>
+                            <p>Миттєвий результат.</p>
+                        </div>
                     </div>
-                    <div class="feature-text">
-                        <h4>Auto-compute</h4>
-                        <p>Миттєвий результат.</p>
-                    </div>
-                </div>
 
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-image"></i>
-                    </div>
-                    <div class="feature-text">
-                        <h4>Підтримка форматів</h4>
-                        <p>PNG, JPG, BMP.</p>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-image"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Підтримка форматів</h4>
+                            <p>PNG, JPG, BMP.</p>
+                        </div>
                     </div>
                 </div>
             </div>
