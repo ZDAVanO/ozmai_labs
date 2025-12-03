@@ -319,9 +319,22 @@
             border: 1px solid var(--glass-border);
             transform: perspective(1000px) rotateY(-5deg);
             transition: transform 0.5s;
+            display: grid;
+            grid-template-areas: "stack";
         }
         .slide-3 .image-container:hover { transform: perspective(1000px) rotateY(0deg); }
-        .slide-3 img { width: 100%; display: block; }
+        
+        .slide-3 img { 
+            width: 100%; 
+            display: block; 
+            grid-area: stack;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .slide-3 img.active {
+            opacity: 1;
+        }
 
         /* Slide 4: Algorithm */
         .algo-step {
@@ -549,7 +562,7 @@
         <h1 class="title-main">Image Comparison Tool</h1>
         <div class="badges-container">
             <div class="badge-pill">Ivaniuk O. O.</div>
-            <div class="badge-pill">2025/08/05</div>
+            <div class="badge-pill">2025/12/03</div>
         </div>
     </div>
 
@@ -663,7 +676,8 @@
 
             <!-- Screenshot -->
             <div class="image-container">
-                <img src="images/demo-web-1.png" alt="Interface Screenshot">
+                <img src="../images/demo-web-1.jpeg" class="active" alt="Interface Screenshot 1">
+                <img src="../images/demo-web-2.jpeg" alt="Interface Screenshot 2">
             </div>
         </div>
     </div>
@@ -925,6 +939,18 @@
 
     // Initialize
     showSlide(0);
+
+    // Image Animation Loop
+    setInterval(() => {
+        const images = document.querySelectorAll('.slide-3 .image-container img');
+        const active = document.querySelector('.slide-3 .image-container img.active');
+        
+        if (active && images.length > 1) {
+            active.classList.remove('active');
+            const next = active.nextElementSibling || images[0];
+            next.classList.add('active');
+        }
+    }, 5000);
 </script>
 
 </body>
