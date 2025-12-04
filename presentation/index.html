@@ -456,9 +456,11 @@
             gap: 1rem;
             width: 100%;
             max-width: 1400px;
+            position: relative;
+            z-index: 2;
         }
         .process-card {
-            background: #111827;
+            background: #111827ad;
             border: 1px solid #1f2937;
             border-radius: 16px;
             padding: 2rem 1rem;
@@ -950,7 +952,7 @@
             const next = active.nextElementSibling || images[0];
             next.classList.add('active');
         }
-    }, 5000);
+    }, 7000);
 </script>
 
 </body>
